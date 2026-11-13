@@ -1,0 +1,32 @@
+name: Feature request
+description: Propose a focused improvement to the workflow generator.
+title: "Feature: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Explain the user problem and keep the proposal aligned with Render Awake's small, dependency-free purpose. Search existing issues first and do not include sensitive data.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: Who encounters this problem, and what are they trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+      description: Describe the behavior you would like and why it helps.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Optional. Describe existing workarounds or other approaches.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Optional. Include relevant examples or screenshots with sensitive details removed.
