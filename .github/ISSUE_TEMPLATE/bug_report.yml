@@ -1,0 +1,59 @@
+name: Bug report
+description: Report a reproducible problem with Render Awake.
+title: "Bug: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Search existing issues before reporting a bug. For security vulnerabilities, email ayush_24a12res897@iitp.ac.in privately instead of opening an issue.
+        Use example URLs and remove sensitive information from all attachments.
+  - type: input
+    id: summary
+    attributes:
+      label: Bug summary
+      placeholder: Briefly describe what is failing.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include the app URL or local commit and non-sensitive example settings.
+      placeholder: |
+        1. Open Render Awake
+        2. Enter ...
+        3. Select ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the exact error message, if any.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and operating system
+      placeholder: Browser name/version and OS name/version
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or logs
+      description: Optional. Attach screenshots or paste relevant sanitized logs. Do not include credentials or private endpoint URLs.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Sensitive information
+      options:
+        - label: I have removed secrets and sensitive information from this report and its attachments.
+          required: true
