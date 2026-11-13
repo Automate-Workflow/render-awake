@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Generate a GitHub Actions workflow to ping your Render service. Private, client-side, and dependency-free.">
+  <title>Render Awake — Workflow generator</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
+  <link rel="stylesheet" href="./css/styles.css">
+  <script type="module" src="./js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#configuration">Skip to configuration</a>
+  <header class="topbar"><div class="header-inner">
+    <a class="brand" href="./"><img src="./assets/logo.svg" alt="" width="36" height="36"><span>Render Awake<span class="brand-caption">A small tool for fewer cold starts.</span></span></a>
+    <a class="repo-link" href="https://github.com/Automate-Workflow/render-awake" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+  </div></header>
+  <main>
+    <div class="intro"><div class="eyebrow"><span class="signal"></span> GITHUB ACTIONS WORKFLOW GENERATOR</div><h1>Keep your Render service awake.</h1><p>Generate a GitHub Actions workflow to ping your Render service on a schedule.<br class="desktop-break"> No backend, no setup complexity.</p></div>
+    <div class="workspace">
+      <section class="panel" aria-labelledby="configuration-title">
+        <div class="panel-heading"><h2 id="configuration-title">Configuration</h2><span class="meta">01 / CONFIGURE</span></div>
+        <form id="configuration" novalidate>
+          <div class="field"><label for="repository">GitHub Repository</label><input id="repository" name="repository" placeholder="owner/repo" autocomplete="off" spellcheck="false" aria-describedby="repository-help repository-error"><p id="repository-help" class="help">Repository name or full GitHub URL.</p><p id="repository-error" class="error" aria-live="polite"></p></div>
+          <div class="field"><label for="branch">Target Branch</label><input id="branch" name="branch" value="main" autocomplete="off" spellcheck="false" aria-describedby="branch-help branch-error"><p id="branch-help" class="help">Scheduled runs use the repository’s actual default branch. Merge your workflow there to activate it.</p><p id="branch-error" class="error" aria-live="polite"></p></div>
+          <div class="field"><label for="url">Render Service URL</label><div class="input-action"><input id="url" name="url" type="url" placeholder="https://your-service.onrender.com" autocomplete="off" spellcheck="false" aria-describedby="url-help url-error endpoint-status"><button id="test" type="button" disabled>Test Endpoint</button></div><p id="url-help" class="help">Use a public HTTPS endpoint, optionally with a health-check path. Do not include secrets.</p><p id="url-error" class="error" aria-live="polite"></p><p id="endpoint-status" class="help" role="status"></p></div>
+          <div class="divider"></div>
+          <div class="field"><label for="interval">Ping Interval</label><select id="interval" name="interval" aria-describedby="interval-help"><option value="10">Every 10 minutes — recommended</option><option value="12">Every 12 minutes</option><option value="14">Every 14 minutes</option></select><p id="interval-help" class="help">GitHub schedules are best-effort and may be delayed. Cron steps restart each hour.</p></div>
+          <div class="field"><label for="hours">Active Hours</label><select id="hours" name="hours" aria-describedby="hours-help"><option value="24">Always Awake — 24 hours/day</option><option value="16">Extended Day — 16 hours/day</option><option value="12">Work Hours — 12 hours/day</option></select><p id="hours-help" class="help">Outside this window, normal traffic can still wake your service.</p></div>
+          <div id="window-options" class="field-grid" hidden><div class="field"><label for="start">Start hour</label><select id="start" name="start"></select></div><div class="field"><label for="timezone">Timezone</label><select id="timezone" name="timezone"><option value="UTC">UTC</option><option value="Asia/Kolkata">IST (Asia/Kolkata)</option></select></div></div>
+          <div class="path-row"><span class="help">WORKFLOW PATH</span><code>.github/workflows/render-awake.yml</code></div>
+        </form>
+      </section>
+      <section class="panel preview-panel" aria-labelledby="preview-title">
+        <div class="panel-heading"><h2 id="preview-title">Generated workflow</h2><span id="ready" class="badge" role="status">Awaiting inputs</span></div>
+        <div class="filebar"><span>render-awake.yml</span><span>YAML</span></div>
+        <div class="code-area"><pre id="preview" tabindex="0" aria-label="Generated workflow YAML"><code id="yaml"># Your workflow starts here.
+# Enter a repository and service URL
+# to generate a ready-to-use workflow.</code></pre></div>
+        <div class="preview-bottom"><p id="schedule-summary" class="schedule-summary">Your schedule, your service.</p><div class="actions"><button id="github" class="primary" type="button" disabled>Open on GitHub <span aria-hidden="true">↗</span></button><button id="copy" type="button" disabled>Copy YAML</button><button id="download" type="button" disabled>Download YAML</button></div><p id="action-status" class="help" role="status">Generate, review, then add to your repository.</p><a id="github-fallback" hidden target="_blank" rel="noopener noreferrer">Continue to GitHub</a><div id="manual-copy" hidden><label for="manual-yaml">Select and copy the YAML below</label><textarea id="manual-yaml" readonly rows="5"></textarea></div></div>
+      </section>
+    </div>
+    <aside class="notice"><span class="notice-mark" aria-hidden="true">i</span><div><strong>A schedule, not an uptime guarantee.</strong><p>Pings consume Render instance hours. Free allowances are shared across your workspace; deployments, outages, and scheduling delays can still interrupt availability. <a href="https://render.com/docs/free" target="_blank" rel="noopener noreferrer">Review Render’s limits ↗</a></p></div></aside>
+    <section class="next-steps" aria-labelledby="next-title"><h2 id="next-title">From configuration to first ping.</h2><ol><li><span>01</span><div><h3>Configure your service</h3><p>Choose a repository, endpoint, and schedule.</p></div></li><li><span>02</span><div><h3>Add the workflow</h3><p>Open GitHub, paste YAML, and choose a new branch.</p></div></li><li><span>03</span><div><h3>Merge and run</h3><p>Create a pull request. Merge to the default branch, then check Actions.</p></div></li></ol><p class="help">Already have this workflow? Edit the existing file instead of creating a duplicate.</p></section>
+  </main>
+  <footer><span>Render Awake <span class="footer-separator">/</span> Maintained by <a href="https://github.com/Automate-Workflow">Automate-Workflow</a></span><span>Client-side. Open source. Apache-2.0.</span></footer>
+</body>
+</html>
